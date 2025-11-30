@@ -1,3 +1,4 @@
+import 'package:chat_app/widgets/custom_button.dart';
 import 'package:chat_app/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class LoginPage extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: 150,
+            height: 200,
             color: Color(0xFF0865FE),
             child: Padding(
               padding: const EdgeInsets.only(top: 30),
@@ -20,8 +21,12 @@ class LoginPage extends StatelessWidget {
           ),
           SizedBox(height: 100,),
           CustomTextField(hintText: 'email address',),
-          SizedBox(height: 20,),
+          SizedBox(height: 10,),
           CustomTextField(hintText: 'password',),
+          SizedBox(height: 20,),
+          CustomButton(text: 'Log in', boxColor: Color(0xFF0865FE), textColor: Colors.white,),
+          SizedBox(height: 250,),
+          CustomButton(text: 'Create an account', boxColor: Color(0xFF0C151A), textColor: Color(0xFF0865FE),),
         ],
       ),
      );
