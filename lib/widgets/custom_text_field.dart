@@ -9,6 +9,7 @@ class CustomTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: TextFormField(
+        style: const TextStyle(color: Colors.white),
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: const TextStyle(color: Colors.white),
@@ -22,9 +23,9 @@ class CustomTextField extends StatelessWidget {
             borderSide: BorderSide(color: Colors.white),
             borderRadius: BorderRadius.all(Radius.circular(15)),
           ),
-        
         ),
       ),
     );
   }
 }
+

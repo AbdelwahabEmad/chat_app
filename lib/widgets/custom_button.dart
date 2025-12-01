@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  CustomButton({super.key, required this.text, required this.boxColor, required this.textColor});
+  CustomButton({super.key, required this.text, required this.boxColor, required this.textColor, this.onTap});
   
   final String text;
   final Color boxColor;
   final Color textColor;
+  void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
+    return GestureDetector( // to make the button clickable
+      onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Container(

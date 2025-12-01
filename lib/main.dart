@@ -1,3 +1,4 @@
+import 'package:chat_app/pages/create_account_page.dart';
 import 'package:chat_app/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,11 @@ class ChatApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginPage(),
+      routes: { //
+        LoginPage.id: (context) => const LoginPage(),
+        CreateAccountPage.id: (context) => const CreateAccountPage(),
+      },
+      initialRoute: LoginPage.id,
     );
   }
 }

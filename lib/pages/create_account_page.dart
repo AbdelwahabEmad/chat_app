@@ -3,10 +3,10 @@ import 'package:chat_app/widgets/custom_button.dart';
 import 'package:chat_app/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class CreateAccountPage extends StatelessWidget {
+  const CreateAccountPage({super.key});
   
-  static const String id = 'login_page';
+  static const String id = 'create_account_page';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,16 +40,18 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 70),
+            CustomTextField(hintText: 'username'),
+            const SizedBox(height: 10),
             CustomTextField(hintText: 'email address'),
             const SizedBox(height: 10),
             CustomTextField(hintText: 'password'),
             const SizedBox(height: 20),
             CustomButton(
-              text: 'Log in',
+              text: 'Create Account',
               boxColor: Color(0xFF0865FE),
               textColor: Colors.white,
             ),
-            const SizedBox(height: 230),
+            const SizedBox(height: 160),
             CustomButton(
               onTap: (){
                 Navigator.pushNamed(context, 'create_account_page');
