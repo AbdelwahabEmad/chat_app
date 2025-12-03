@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 
 class CreateAccountPage extends StatelessWidget {
   const CreateAccountPage({super.key});
-  
+
   static const String id = 'create_account_page';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: Color(0xFF0C151A),
+      backgroundColor: Color(kprimaryColor),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(bottom: 50),
         child: Column(
@@ -21,8 +21,8 @@ class CreateAccountPage extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Color(0xFF0865FE),
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
+                  bottomLeft: Radius.circular(150),
+                  bottomRight: Radius.circular(150),
                 ),
               ),
               child: const Padding(
@@ -50,15 +50,6 @@ class CreateAccountPage extends StatelessWidget {
               text: 'Create Account',
               boxColor: Color(0xFF0865FE),
               textColor: Colors.white,
-            ),
-            const SizedBox(height: 160),
-            CustomButton(
-              onTap: (){
-                Navigator.pushNamed(context, 'create_account_page');
-              },
-              text: 'Create an account',
-              boxColor: Color(KprimaryColor),
-              textColor: Color(0xFF0865FE),
             ),
           ],
         ),
