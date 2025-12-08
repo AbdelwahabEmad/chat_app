@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
-  
+
   static const String id = 'login_page';
 
   @override
@@ -13,6 +13,24 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController emailAddressController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  String? errMessage;
+  void validateAndProceed() {
+    setState(() {
+      if (emailAddressController.text.isEmpty && passwordController.text.isEmpty) {
+        errMessage = 'please enter your email address and password';
+      } else if (emailAddressController.text.isEmpty) {
+        errMessage = 'please enter your email address';
+      } else if (passwordController.text.isEmpty) {
+        errMessage = 'please enter your password';
+      } else {
+        //to next page
+        errMessage = null;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
         padding: EdgeInsets.only(bottom: 50),
         child: Column(
           children: [
-            Container (
+            Container(
               height: 250,
               decoration: BoxDecoration(
                 color: Color(0xFF0865FE),
@@ -46,19 +64,42 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const SizedBox(height: 70),
-            CustomTextField(hintText: 'email address'),
+            CustomTextField(
+              hintText: 'email address',
+              controller: emailAddressController,
+              hasError: errMessage != null && emailAddressController.text.isEmpty,
+            ),
             const SizedBox(height: 10),
-            CustomTextField(hintText: 'password'),
-            const SizedBox(height: 20),
+            CustomTextField(
+              hintText: 'password',
+              controller: passwordController,
+              hasError: errMessage != null && passwordController.text.isEmpty,
+            ),
+             SizedBox(height: 10),
+            if (errMessage != null) ...[
+            SizedBox(height: 5),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  errMessage!,
+                  style: TextStyle(color: Colors.red, fontSize: 14),
+                ),
+              ),
+            ),
+          ],
+          SizedBox(height: 10),
             CustomButton(
               text: 'Log in',
               boxColor: Color(0xFF0865FE),
               textColor: Colors.white,
+              onTap: validateAndProceed,
             ),
             const SizedBox(height: 230),
             CustomButton(
-              onTap: (){
-                Navigator.pushNamed(context, 'create_account_page');
+              onTap: () {
+                Navigator.pushNamed(context, 'name_page');
               },
               text: 'Create an account',
               boxColor: Color(kprimaryColor),
