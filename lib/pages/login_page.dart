@@ -1,4 +1,5 @@
 import 'package:chat_app/constants.dart';
+import 'package:chat_app/pages/name_page.dart';
 import 'package:chat_app/widgets/custom_button.dart';
 import 'package:chat_app/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 230),
             CustomButton(
               onTap: () {
-                Navigator.pushNamed(context, 'name_page');
+                Navigator.pushNamed(context, NamePage.id);
               },
               text: 'Create an account',
               boxColor: Color(kprimaryColor),

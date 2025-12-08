@@ -1,6 +1,7 @@
 import 'package:chat_app/firebase_options.dart';
-import 'package:chat_app/pages/birth_date_page.dart';
+import 'package:chat_app/pages/age_page.dart';
 import 'package:chat_app/pages/create_account_page.dart';
+import 'package:chat_app/pages/gender_page.dart';
 import 'package:chat_app/pages/login_page.dart';
 import 'package:chat_app/pages/name_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,7 +27,8 @@ class ChatApp extends StatelessWidget {
         LoginPage.id: (context) => LoginPage(),
         CreateAccountPage.id: (context) => CreateAccountPage(),
         NamePage.id: (context) => NamePage(),
-        BirthDatePage.id: (context) => BirthDatePage(),
+        AgePage.id: (context) => AgePage(),
+        GenderPage.id: (context) => GenderPage(),
       },
       initialRoute: LoginPage.id,
     );

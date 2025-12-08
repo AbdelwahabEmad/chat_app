@@ -1,37 +1,35 @@
 import 'package:chat_app/constants.dart';
-import 'package:chat_app/pages/age_page.dart';
+import 'package:chat_app/pages/gender_page.dart';
+import 'package:chat_app/pages/login_page.dart';
 import 'package:chat_app/widgets/custom_button.dart';
 import 'package:chat_app/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
-class NamePage extends StatefulWidget {
-  NamePage({super.key});
+class AgePage extends StatefulWidget {
+  const AgePage({super.key});
 
-  static const String id = 'name_page';
+  static const String id = 'date_page';
 
   @override
-  State<NamePage> createState() => _NamePageState();
+  State<AgePage> createState() => _BirthDatePageState();
 }
 
-class _NamePageState extends State<NamePage> {
-  final TextEditingController firstNameController = TextEditingController();
-  final TextEditingController surnameController = TextEditingController();
+class _BirthDatePageState extends State<AgePage> {
+
+  final TextEditingController ageController = TextEditingController();
   String? errMessage;
   void validateAndProceed() {
     setState(() {
-      if (firstNameController.text.isEmpty && surnameController.text.isEmpty) {
-        errMessage = 'Please enter your first name and surname';
-      } else if (firstNameController.text.isEmpty) {
-        errMessage = 'Please enter your first name';
-      } else if (surnameController.text.isEmpty) {
-        errMessage = 'Please enter your surname';
+      if (ageController.text.isEmpty) {
+        errMessage = 'Please enter your age';
       } else {
         //to next page
         errMessage = null;
-        Navigator.pushNamed(context, AgePage.id);
+        Navigator.pushNamed(context, GenderPage.id);
       }
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +47,7 @@ class _NamePageState extends State<NamePage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
-              "What's your name?",
+              "How old are you?",
               style: TextStyle(color: Colors.white, fontSize: 24),
             ),
           ),
@@ -57,21 +55,15 @@ class _NamePageState extends State<NamePage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
-              'Enter the name you use in real life.',
+              'Enter your age.',
               style: TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
           SizedBox(height: 20),
           CustomTextField(
-            hintText: 'First name',
-            controller: firstNameController,
-            hasError: errMessage != null && firstNameController.text.isEmpty,
-          ),
-          SizedBox(height: 10),
-          CustomTextField(
-            hintText: 'Surname',
-            controller: surnameController,
-            hasError: errMessage != null && surnameController.text.isEmpty,
+            hintText: 'Age',
+            controller: ageController,
+            hasError: errMessage != null,
           ),
           SizedBox(height: 10),
             if (errMessage != null) ...[
@@ -90,15 +82,18 @@ class _NamePageState extends State<NamePage> {
             boxColor: Color(0xFF0865FE),
             textColor: Colors.white,
             onTap: validateAndProceed,
-          ),
-        
+          ),  
           Spacer(),
           CustomButton(
             text: 'already have account',
             boxColor: Color(kprimaryColor),
             textColor: Color(0xFF0865FE),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                LoginPage.id,
+                (route) => false,
+              );
             },
           ),
           SizedBox(height: 35),
